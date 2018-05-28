@@ -1,0 +1,180 @@
+/*                */
+/* header oculto */
+/*                */
+header {
+    position: fixed;
+    z-index: 5;
+    top: 0;
+    -webkit-transition: all .5s;
+    transition: all .5s;
+}
+.headerOut {
+    top: -55px;
+}
+/*                */
+/* header oculto FIM*/
+/*                */
+
+/*                */
+/* flex div */
+/*                */
+.flex-box-container {
+    -webkit-columns: 4 250px;
+    -moz-columns: 4 250px;
+    columns: 4 250px;
+ 
+    -webkit-column-gap: 2em;
+    -moz-column-gap: 2em;
+    column-gap: 2em;
+}
+.rui-cards {
+    overflow: hidden;
+    -webkit-column-break-inside: avoid;
+}
+.rui-cards .actions{
+    display: none;
+}
+/*                */
+/* flex div FIM */
+/*                */
+
+/**/
+/*swipe*/
+/**/
+.content-opened-swipe{
+    overflow: hidden;
+    max-height: 100%;
+    position: fixed;
+}
+.rui-swipe-container{
+    -webkit-transition: all .7s;
+    transition: all .7s;
+    position: fixed;
+    overflow: hidden;
+    padding-top:65px;
+    width: 100%;
+    right: -100%;
+    left: 100%;
+    bottom:0;
+    top:0;
+}
+.opened-swipe{
+    background: white;
+    overflow: auto;
+    right: 0;
+    left: 0;
+}
+.rui-swipe-content-container{
+    max-height: calc(100% - 70px);
+    overflow: auto;
+}
+/**/
+/*swipe FIM*/
+/**/
+.actions{
+    text-align: center;
+    position: absolute;
+    margin: 10px auto;
+    display: table;
+    padding: 5px 0;
+    width: 100%;
+    bottom: 0;
+    right: 0;
+    left: 0;
+}
+.action-item{
+    display: table-cell;
+}
+.action-item i, .action-item span{
+    display: block;
+    pointer-events: none;
+}
+
+@keyframes approval {
+    0%{
+        top: 20%;
+        left: 20%;
+        width: 50px;
+        height: 50px;
+        background: transparent;
+    }
+    50%{
+        width: 50px;
+        height: 50px;
+        background: transparent;
+    }
+    100%{
+        top:100%;
+        left: 20%;
+        background: transparent;
+    }
+}
+@keyframes reproval {
+    0%{
+        top: 20%;
+        left: 40%;
+        width: 50px;
+        height: 50px;
+        background: transparent;
+    }
+    50%{
+        width: 50px;
+        height: 50px;
+        background: transparent;
+    }
+    100%{
+        width: 50px;
+        height: 50px;
+        top:100%;
+        left: 40%;
+        background: transparent;
+    }
+}
+.approval-animation-preparation, .reproval-animation-preparation{
+    -webkit-transition: all .5s;
+    background: lightgreen;
+    transition: all .5s;
+    border-radius: 100%;
+    overflow: hidden;
+    position: fixed;
+    z-index: 300;
+    height: 30px;
+    width: 30px;
+    padding: 0;
+    margin: 0;
+    left: 20%;
+    top: 20%;
+}
+.reproval-animation-preparation{
+    background: red;
+    left: 40%;
+}
+.approval-animation-starts, 
+.reproval-animation-starts{
+    animation-iteration-count: 1;
+    animation-name: approval;
+    animation-duration: 2s;
+}
+.reproval-animation-starts {
+    animation-name: reproval;
+}
+.approval-animation-starts:before, 
+.reproval-animation-starts:before{
+    content: '\f058';
+    font-family: "Font Awesome\ 5 Free";
+    font-size: 2rem;
+    color: green;
+    display: block;
+    text-align: center;
+    margin-top: 10px;
+}
+.reproval-animation-starts:before{
+    content: '\f057';
+    color: red;
+}
+.approval-animation-preparation .rui-swipe-content-container,
+.approval-animation-preparation .actions,
+.reproval-animation-preparation .actions,
+.reproval-animation-preparation .rui-swipe-content-container {
+    display: none ;
+}
